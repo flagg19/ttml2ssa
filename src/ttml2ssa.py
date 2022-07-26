@@ -80,13 +80,30 @@ class Ttml2Ssa(object):
         #  But it may not exist or it may be wrong.
         self.lang = None
 
-        self.ssa_style = OrderedDict([('Fontname', 'Arial'), ('Fontsize', 50), \
-                          ('PrimaryColour', '&H00EEEEEE'), ('BackColour', '&H40000000'), ('OutlineColour', '&H00000000'), \
-                          ('Bold', 0), ('Italic', 0), \
-                          ('Alignment', 2), \
-                          ('BorderStyle', 1), \
-                          ('Outline', 2), ('Shadow', 3), \
-                          ('MarginL', 40), ('MarginR', 40), ('MarginV', 40)])
+        self.ssa_style = OrderedDict([
+            ('Fontname', 'Arial'),
+            ('Fontsize', 50),
+            ('PrimaryColour', '&H00EEEEEE'),
+            ('SecondaryColour', '&H0300FFFF'),
+            ('OutlineColour', '&H00000000'),
+            ('BackColour', '&H40000000'),
+            ('Bold', 0),
+            ('Italic', 0),
+            ('Underline', 0),
+            ('StrikeOut', 0),
+            ('ScaleX', 100),
+            ('ScaleY', 100),
+            ('Spacing', 0),
+            ('Angle', 0),
+            ('BorderStyle', 1),
+            ('Outline', 2),
+            ('Shadow', 3),
+            ('Alignment', 2),
+            ('MarginL', 40),
+            ('MarginR', 40),
+            ('MarginV', 40),
+            ('Encoding', 1)
+        ])
         self.ssa_playresx = 1280
         self.ssa_playresy = 720
 
@@ -476,7 +493,7 @@ class Ttml2Ssa(object):
         if self.allow_timestamp_manipulation and timestamp_min_sep > 0:
             fix_timestamps_separation(entries, timestamp_min_sep)
 
-        ssa_format_str = 'Dialogue: 0,{},{},Default,{}\r\n'
+        ssa_format_str = 'Dialogue: 0,{},{},Default,,0,0,0,,{}\r\n'
         res = ""
         for entry in entries:
             text = entry['text']
@@ -506,10 +523,10 @@ class Ttml2Ssa(object):
             "PlayResX: {}\r\n" \
             "PlayResY: {}\r\n\r\n" \
             "[V4+ Styles]\r\n" \
-            "Format: Name, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}\r\n" \
-            "Style: Default,{},{},{},{},{},{},{},{},{},{},{},{},{},{}\r\n\r\n" \
+            "Format: Name, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}\r\n" \
+            "Style: Default,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\r\n\r\n" \
             "[Events]\r\n" \
-            "Format: Layer, Start, End, Style, Text\r\n" \
+            "Format: Layer, Start, End, Style, Actor, MarginL, MarginR, MarginV, Effect, Text\r\n" \
             .format(self.ssa_playresx, self.ssa_playresy, \
                     *list(self.ssa_style.keys()) + list(self.ssa_style.values()))
 
