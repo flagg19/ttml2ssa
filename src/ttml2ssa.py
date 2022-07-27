@@ -521,7 +521,8 @@ class Ttml2Ssa(object):
             "Collisions: Normal\r\n" \
             "PlayDepth: 0\r\n" \
             "PlayResX: {}\r\n" \
-            "PlayResY: {}\r\n\r\n" \
+            "PlayResY: {}\r\n" \
+            "ScaledBorderAndShadow: yes\r\n\r\n" \
             "[V4+ Styles]\r\n" \
             "Format: Name, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}\r\n" \
             "Style: Default,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\r\n\r\n" \
