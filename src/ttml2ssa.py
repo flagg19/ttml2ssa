@@ -83,10 +83,10 @@ class Ttml2Ssa(object):
         self.ssa_style = OrderedDict([
             ('Fontname', 'Arial'),
             ('Fontsize', 50),
-            ('PrimaryColour', '&H00EEEEEE'),
-            ('SecondaryColour', '&H0300FFFF'),
+            ('PrimaryColour', '&H00FFFFFF'),
+            ('SecondaryColour', '&H000000FF'),
             ('OutlineColour', '&H00000000'),
-            ('BackColour', '&H40000000'),
+            ('BackColour', '&H00000000'),
             ('Bold', 0),
             ('Italic', 0),
             ('Underline', 0),
@@ -96,12 +96,12 @@ class Ttml2Ssa(object):
             ('Spacing', 0),
             ('Angle', 0),
             ('BorderStyle', 1),
-            ('Outline', 2),
-            ('Shadow', 3),
+            ('Outline', 3),
+            ('Shadow', 0),
             ('Alignment', 2),
-            ('MarginL', 40),
-            ('MarginR', 40),
-            ('MarginV', 40),
+            ('MarginL', 30),
+            ('MarginR', 30),
+            ('MarginV', 30),
             ('Encoding', 1)
         ])
         self.ssa_playresx = 1280
@@ -524,10 +524,10 @@ class Ttml2Ssa(object):
             "PlayResY: {}\r\n" \
             "ScaledBorderAndShadow: yes\r\n\r\n" \
             "[V4+ Styles]\r\n" \
-            "Format: Name, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}\r\n" \
+            "Format: Name,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\r\n" \
             "Style: Default,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\r\n\r\n" \
             "[Events]\r\n" \
-            "Format: Layer, Start, End, Style, Actor, MarginL, MarginR, MarginV, Effect, Text\r\n" \
+            "Format: Layer,Start,End,Style,Actor,MarginL,MarginR,MarginV,Effect,Text\r\n" \
             .format(self.ssa_playresx, self.ssa_playresy, \
                     *list(self.ssa_style.keys()) + list(self.ssa_style.values()))
 
